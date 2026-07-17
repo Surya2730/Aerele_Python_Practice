@@ -1,4 +1,6 @@
 from dataclasses import dataclass
+from enum import Enum
+
 
 @dataclass
 class Invoice:
@@ -9,12 +11,17 @@ class Invoice:
 
 i = Invoice(
     invoice_id = 21,
-    customer_name = "",
+    customer_name = "Surya",
     Amount = 1000.00,
     Status = "Paid"
 )
 
 print(i)
+
+class Status(Enum):
+    PAID = "Paid"
+    UNPAID = "Unpaid"
+
 
 class InvoiceController:
     def validate_invoice(self, i):
@@ -33,3 +40,22 @@ class InvoiceController:
 controller = InvoiceController()
 controller.validate_invoice(i)
 
+print(Status.PAID.value)
+
+
+class Employee:
+    def __init__(self, name):
+        self.name = name
+
+    @property
+    def get_name(self):
+        return self.name
+    
+    @get_name.setter
+    def set_name(self, name):
+        self.name = name
+    
+surya=Employee("Surya")
+surya.set_name = "Surya Kumar"
+
+print(surya.get_name)
